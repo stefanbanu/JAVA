@@ -1,0 +1,3 @@
+#Ignored files
+*/target/
+*.class
