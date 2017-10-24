@@ -93,6 +93,73 @@
 				pageOnly="true" />
 		</h:commandLink>
 	</h:form>
+	<h:form id="userForm">
+		<p:dataTable id="userTbl" var="user" value="#{userExporterView.users}"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+			paginator="true" rows="10" style="margin-bottom:20px">
+
+			<f:facet name="{Exporters}">
+				<h:commandLink>
+					<p:graphicImage name="/demo/images/excel.png" width="24" />
+					<p:dataExporter type="xls" target="userTbl" fileName="users" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage name="/demo/images/pdf.png" width="24" />
+					<p:dataExporter type="pdf" target="userTbl" fileName="users" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage name="/demo/images/csv.png" width="24" />
+					<p:dataExporter type="csv" target="userTbl" fileName="users" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage name="/demo/images/xml.png" width="24" />
+					<p:dataExporter type="xml" target="userTbl" fileName="users" />
+				</h:commandLink>
+			</f:facet>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				<h:outputText value="#{user.id}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="UserName" />
+				</f:facet>
+				<h:outputText value="#{user.username}" />
+			</p:column>
+		</p:dataTable>
+
+		<h3>Export Users list</h3>
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/excel.png" />
+			<p:dataExporter type="xls" target="userTbl" fileName="users"
+				pageOnly="true" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/pdf.png" />
+			<p:dataExporter type="pdf" target="userTbl" fileName="users"
+				pageOnly="true" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/csv.png" />
+			<p:dataExporter type="csv" target="userTbl" fileName="users"
+				pageOnly="true" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/xml.png" />
+			<p:dataExporter type="xml" target="userTbl" fileName="users"
+				pageOnly="true" />
+		</h:commandLink>
+	</h:form>
 </h:body>
 </html>
 

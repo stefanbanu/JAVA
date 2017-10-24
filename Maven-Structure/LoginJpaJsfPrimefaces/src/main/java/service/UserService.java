@@ -13,22 +13,23 @@ import model.User;
  * @author stefanbanu
  */
 public enum UserService {
-    INSTANCE;
-    private final UserDao uDao;
+	INSTANCE;
+	private final UserDao uDao;
 
-    private UserService() {
-        uDao = new UserDao();
-    }
+	private UserService() {
+		uDao = new UserDao();
+	}
 
-    public String register(String username, String password) {
-        if (uDao.checkUser(username)) {
-            return username;
-        }
-        uDao.insertUserToDB(username, password);
-        return "";
-    }
+	public String register(String username, String password) {
+		if (uDao.checkUser(username)) {
+			return username;
+		}
+		uDao.insertUserToDB(username, password);
+		return "";
+	}
 
-    public User login(String username) {
-        return uDao.getUserByUsername(username);      
-    }
+	public User login(String username) {
+		return uDao.getUserByUsername(username);
+	}
+
 }
