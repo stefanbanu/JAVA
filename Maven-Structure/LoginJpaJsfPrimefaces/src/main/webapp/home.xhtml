@@ -5,13 +5,94 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Home Page</title>
-    </h:head>
-    <h:body style="background-color: #324b72">
-         <p:growl id="growl" sticky="false" showDetail="true" life="3000" />
-         <h1>Welcome #{userController.username} </h1>
-         <h1>Home Page! </h1>
-    </h:body>
+<h:head>
+	<title>Home Page</title>
+</h:head>
+<h:body style="background-color: #324b72">
+	<p:growl id="growl" sticky="false" showDetail="true" life="3000" />
+	<h1>Welcome #{userController.username}</h1>
+	<h1>Home Page!</h1>
+	<h:form id="form">
+		<p:dataTable id="tbl" var="car" value="#{dataExporterView.cars}"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+			paginator="true" rows="10" style="margin-bottom:20px">
+
+			<f:facet name="{Exporters}">
+				<h:commandLink>
+					<p:graphicImage name="/demo/images/excel.png" width="24" />
+					<p:dataExporter type="xls" target="tbl" fileName="cars" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage name="/demo/images/pdf.png" width="24" />
+					<p:dataExporter type="pdf" target="tbl" fileName="cars" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage name="/demo/images/csv.png" width="24" />
+					<p:dataExporter type="csv" target="tbl" fileName="cars" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage name="/demo/images/xml.png" width="24" />
+					<p:dataExporter type="xml" target="tbl" fileName="cars" />
+				</h:commandLink>
+			</f:facet>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				<h:outputText value="#{car.id}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Year" />
+				</f:facet>
+				<h:outputText value="#{car.year}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Brand" />
+				</f:facet>
+				<h:outputText value="#{car.brand}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Color" />
+				</f:facet>
+				<h:outputText value="#{car.color}" />
+			</p:column>
+		</p:dataTable>
+
+		<h3>Export Page Data Only</h3>
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/excel.png" />
+			<p:dataExporter type="xls" target="tbl" fileName="cars"
+				pageOnly="true" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/pdf.png" />
+			<p:dataExporter type="pdf" target="tbl" fileName="cars"
+				pageOnly="true" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/csv.png" />
+			<p:dataExporter type="csv" target="tbl" fileName="cars"
+				pageOnly="true" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<p:graphicImage name="/demo/images/xml.png" />
+			<p:dataExporter type="xml" target="tbl" fileName="cars"
+				pageOnly="true" />
+		</h:commandLink>
+	</h:form>
+</h:body>
 </html>
 
