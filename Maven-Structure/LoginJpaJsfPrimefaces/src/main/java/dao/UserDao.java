@@ -7,6 +7,8 @@ package dao;
 
 import javax.persistence.EntityManager;
 import model.User;
+
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,9 +18,10 @@ import javax.persistence.Query;
  *
  * @author stefanbanu
  */
-public class UserDao {
+public class UserDao implements Serializable{
 
-	private final EntityManagerFactory emf;
+	private static final long serialVersionUID = 1L;
+	private final transient EntityManagerFactory emf;
 
 	public UserDao() {
 		emf = Persistence.createEntityManagerFactory("LoginJpaJsfPrimefaces");

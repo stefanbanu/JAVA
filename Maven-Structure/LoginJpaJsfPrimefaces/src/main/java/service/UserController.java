@@ -57,8 +57,8 @@ public class UserController implements Serializable {
     }
 
     private void clearInputText() {
-        username = "";
-        password = "";
+        username = null;
+        password = null;
     }
 
     public String getUsername() {

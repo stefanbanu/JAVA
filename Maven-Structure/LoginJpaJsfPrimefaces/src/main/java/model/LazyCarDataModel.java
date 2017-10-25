@@ -13,7 +13,8 @@ import org.primefaces.model.SortOrder;
  */
 public class LazyCarDataModel extends LazyDataModel<Car> {
      
-    private List<Car> datasource;
+	private static final long serialVersionUID = 1L;
+	private List<Car> datasource;
      
     public LazyCarDataModel(List<Car> datasource) {
         this.datasource = datasource;
@@ -36,7 +37,7 @@ public class LazyCarDataModel extends LazyDataModel<Car> {
  
     @Override
     public List<Car> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
-        List<Car> data = new ArrayList<Car>();
+        List<Car> data = new ArrayList<>();
  
         //filter
         for(Car car : datasource) {
